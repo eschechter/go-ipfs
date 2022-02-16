@@ -177,8 +177,17 @@ func (c *datastoreConfig) Create(path string) (repo.Datastore, error) {
 	defopts.Truncate = c.truncate
 	defopts.Compression = c.compression
 	defopts.ZSTDCompressionLevel = c.zstdCompressionLevel
-	defopts.BlockCacheSize = c.blockCacheSize
-	defopts.ValueLogFileSize = c.vlogFileSize
+	defopts.MaxTableSize = 256 << 20
+	defopts.ValueLogFileSize = 64 << 20
+	defopts.TableLoadingMode = badgeropts.FileIO
+	defopts.ValueLogLoadingMode = badgeropts.FileIO
+	defopts.LoadBloomsOnOpen = false
+	defopts.NumMemtables = 1
+	defopts.IndexCacheSize = 2000 << 20
+	defopts.NumLevelZeroTables = 1
+	defopts.NumLevelZeroTablesStall = 2
+	defopts.KeepL0InMemory = false
+	defopts.CompactL0OnClose = false
 
 	return badger2ds.NewDatastore(p, &defopts)
 }
