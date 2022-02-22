@@ -183,7 +183,6 @@ func (c *datastoreConfig) Create(path string) (repo.Datastore, error) {
 	defopts.ValueLogLoadingMode = badgeropts.FileIO
 	defopts.LoadBloomsOnOpen = false
 	defopts.NumMemtables = 1
-	defopts.IndexCacheSize = 2000 << 20
 	defopts.NumLevelZeroTables = 1
 	defopts.NumLevelZeroTablesStall = 2
 	defopts.KeepL0InMemory = false
