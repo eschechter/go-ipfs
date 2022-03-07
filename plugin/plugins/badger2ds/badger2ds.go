@@ -178,7 +178,6 @@ func (c *datastoreConfig) Create(path string) (repo.Datastore, error) {
 	defopts.Compression = c.compression
 	defopts.ZSTDCompressionLevel = c.zstdCompressionLevel
 	defopts.MaxTableSize = 256 << 20
-	defopts.ValueLogFileSize = 64 << 20
 	defopts.TableLoadingMode = badgeropts.FileIO
 	defopts.ValueLogLoadingMode = badgeropts.FileIO
 	defopts.LoadBloomsOnOpen = false
