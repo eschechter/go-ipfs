@@ -180,7 +180,7 @@ func (c *datastoreConfig) Create(path string) (repo.Datastore, error) {
 	defopts.MaxTableSize = 256 << 20
 	defopts.TableLoadingMode = badgeropts.FileIO
 	defopts.ValueLogLoadingMode = badgeropts.FileIO
-	defopts.LoadBloomsOnOpen = false
+	defopts.LoadBloomsOnOpen = true
 	defopts.NumMemtables = 1
 	defopts.NumLevelZeroTables = 1
 	defopts.NumLevelZeroTablesStall = 2
